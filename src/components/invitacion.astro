@@ -1,0 +1,196 @@
+---
+import "../styles/global.css";
+import { Image } from "astro:assets";
+import fondo1 from "../assets/images/fondo-1.jpeg";
+import fondo2 from "../assets/images/fondo-2.jpeg";
+import { birthdayData } from "../data/evento.ts";
+import iglesia from "../assets/images/iglesia.jpeg";
+import salon from "../assets/images/salon.png";
+import fondo3 from "../assets/images/fondo-3.jpg";
+import fondo4 from "../assets/images/fondo-4.jpg";
+import dreesCode from "../assets/dress-code.webp";
+import fondo5 from "../assets/images/fondo-5.jpg";
+---
+<main>
+    <section class="relative isolate max-w-2xl w-full h-screen mx-auto flex flex-col justify-center items-center gap-16 px-10 bg-purple-950">
+        <div class="absolute inset-0 -z-10">
+            <Image
+                src={fondo1} alt="" class="object-cover bg-no-repeat h-full w-full opacity-80"
+            />
+        </div>
+        <div class="w-full flex flex-col justify-center items-center gap-5 py-10 mt-50">
+            <h1 class="text-7xl font-rouge text-white">{birthdayData.nombrePersona}</h1>
+            <h2 class="text-2xl font-montserrat font-light uppercase text-white">¡Mis 15 años!</h2>
+            
+            <ul class="flex justify-center items-center gap-4 w-full [&>li>span]:text-white">
+                <li class="flex flex-col items-center space-x-2 space-y-2">
+                    <div id="dias" class="bg-white/20 rounded-full flex h-16 w-16 items-center justify-center text-xl text-white font-medium shadow-md">00</div>
+                    <span class="font-light text-sm">DÍAS</span>
+                </li>
+                <li class="flex flex-col items-center space-x-2 space-y-2">
+                    <div id="horas" class="bg-white/20 rounded-full flex h-16 w-16 items-center justify-center text-xl text-white font-medium shadow-md">00</div>
+                    <span class="font-light text-sm">HORAS</span>
+                </li>
+                <li class="flex flex-col items-center space-x-2 space-y-2">
+                    <div id="minutos" class="bg-white/20 rounded-full flex h-16 w-16 items-center justify-center text-xl text-white font-medium shadow-md">00</div>
+                    <span class="font-light text-sm">MIN</span>
+                </li>
+                <li class="flex flex-col items-center space-x-2 space-y-2">
+                    <div id="segundos" class="bg-white/20 rounded-full flex h-16 w-16 items-center justify-center text-xl text-white font-medium shadow-md">00</div>
+                    <span class="font-light text-sm">SEG</span>
+                </li>
+            </ul>
+
+            <p class="text-center font-light text-white">
+                Hay momentos inolvidables que se atesoran en el corazón para siempre, por esa razón, quiero que compartas conmigo este día tan especial.
+            </p>
+            <span class="font-light text-white">Mi canción</span>
+
+            <audio id="audio-player" src="/audio/cancion.mp3" loop></audio>
+            <button id="btn-music" class="bg-white/40 border border-white/40 shadow-sm backdrop-blur rounded-full flex justify-center items-center size-14">
+                <!-- Icono Play -->
+                <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+                </svg>
+                <!-- Icono Pause (Oculto por defecto) -->
+                <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 hidden">
+                    <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6 text-white animate-bounce animate-infinite">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+    </section>
+
+    <section class="max-w-2xl w-full mx-auto h-screen">
+        <div>
+            <Image src={fondo2} alt="" class="object-cover bg-center bg-no-repeat w-full" />
+        </div>
+    </section>
+
+    <!-- SECCIÓN: MISA -->
+    <section class="max-w-2xl w-full mx-auto h-screen flex flex-col justify-center items-center gap-8 py-16 px-12 bg-stone-50">
+        <h2 class="font-rouge text-6xl">La Misa</h2>
+
+        <Image src={iglesia} alt="" class="h-full w-full rounded-3xl"/>
+        <h3 class="font-bold text-xl">{birthdayData.misa?.lugar.nombre}</h3>
+
+        <div class="flex flex-col justify-center items-center gap-2">
+            <h3 class="font-bold">Dia y horario: <span class="font-normal">{birthdayData.misa?.fechaYHora}</span></h3>
+            <h3 class="font-bold">Direccion: <span class="font-normal">{birthdayData.misa?.lugar.direccion}</span></h3>
+        </div>
+
+        <button id="btn-misa" class="bg-purple-500 px-6 py-4 rounded-3xl flex justify-center items-center text-white border border-purple-600 font-medium space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+            <span>Ver Direccion</span>
+        </button>
+    </section>
+
+    <!-- SECCIÓN: FIESTA -->
+    <section class="relative isolate max-w-2xl w-full mx-auto h-screen flex flex-col justify-center items-center gap-8 py-16 px-12 bg-black text-white">
+         <div class="absolute inset-0 -z-10">
+            <Image src={fondo3} alt="" class="object-cover bg-no-repeat h-full w-full opacity-40"/>
+        </div>
+        <h2 class="font-rouge text-6xl">La fiesta</h2>
+        <Image src={salon} alt="" class="h-full w-full rounded-3xl"/>
+
+        <h3 class="font-bold text-xl">{birthdayData.fiesta.lugar.nombre}</h3>
+        <div class="flex flex-col justify-center items-center gap-2">
+            <h3 class="font-bold">Dia y horario: <span class="font-normal">{birthdayData.fiesta.fechaYHora}</span></h3>
+            <h3 class="font-bold">Direccion: <span class="font-normal">{birthdayData.fiesta.lugar.direccion}</span></h3>
+        </div>
+
+        <button id="btn-fiesta" class="bg-purple-500 px-6 py-4 rounded-3xl flex justify-center items-center text-white border border-purple-600 font-medium space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+            <span>Ver Direccion</span>
+        </button>
+    </section>
+
+    <!-- SECCIÓN: CONFIRMACIÓN -->
+    <section class="relative isolate max-w-3xl w-full mx-auto h-screen flex flex-col justify-center items-center gap-16 py-16">
+        <div class="absolute inset-0 -z-10">
+            <Image src={fondo4} alt="" class="object-cover bg-no-repeat h-full w-full opacity-90"/>
+        </div>
+
+        <h2 class="font-rouge text-6xl">Confirmacion</h2>
+        <p class="text-center text-2xl">Espero que puedas acompañarme.<br>¡Confirmá tu asistencia antes del {birthdayData.fiesta.confimacion.fechaLimite}!</p>
+        
+        <button id="btn-whatsapp" class="bg-purple-500 border border-purple-600 px-6 py-4 rounded-3xl flex justify-center items-center text-white font-medium space-x-2">
+            CONFIRMAR ASISTENCIA
+        </button>
+    </section>
+
+    <!-- SECCIÓN: DRESS CODE -->
+    <section class="relative isolate max-w-3xl w-full mx-auto h-screen flex flex-col justify-center items-center gap-16 py-16 bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(106,90,150,.5)_120%)]">
+        <h2 class="font-rouge text-6xl">Dress Code</h2>
+        <Image src={dreesCode} alt="" class="object-cover bg-no-repeat size-44"/>
+
+        <h3 class="text-center font-bold font-serif text-2xl">-{birthdayData.fiesta.codigoVestimenta}-</h3>
+        <p class="text-center font-serif text-2xl">Por favor no asistir con colores como rosa viejo.</p>
+    </section>
+
+    <!-- SECCIÓN: INSTAGRAM -->
+    <!-- <section class="relative isolate max-w-3xl w-full mx-auto flex flex-col justify-center items-center space-y-10 py-28 pb-40 px-6">
+        <div class="absolute inset-x-0 bottom-0 -z-10">
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-20 text-coquette-5">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+        </svg>
+        <h2 class="font-birthstone text-6xl">Etiquetá tus Fotos</h2>
+        <div class="flex flex-col justify-center items-center space-y-6">
+            <p class="text-center">Etiquetáme en Instagram con mi #hashtag en tus fotos y videos.</p>
+            <span class="font-bold text-xl">#mis15luana</span>
+        </div>
+    </section> -->
+        
+    <!-- SECCIÓN: REGALOS -->
+    <section class="relative isolate max-w-3xl w-full mx-auto h-screen flex flex-col justify-center items-center gap-10 py-28 pb-20 px-6">
+        <div class="absolute inset-0 -z-10">
+            <Image
+                src={fondo5} alt="" class="object-cover bg-no-repeat h-full w-full opacity-60"
+            />
+        </div>
+        <h2 class="font-rouge text-6xl">Regalos</h2>
+        <p class="font-serif text-2xl text-center">Tu presencia será el mejor regalo, pero si deseas sorprenderme con un detalle aqui te dejo los datos.</p>
+
+        <!-- Modal trigger -->
+        <div class="max-w-md flex">
+            <label for="modal" class="cursor-pointer py-4 px-6 rounded-3xl bg-purple-500 border border-purple-600 w-full text-center font-medium text-white">
+                Ver datos
+            </label>
+        </div>
+
+        <input type="checkbox" id="modal" class="peer fixed appearance-none opacity-0">
+        
+        <!-- Modal -->
+        <label for="modal" class="pointer-events-none invisible fixed inset-0 flex items-center justify-center cursor-pointer overflow-hidden overscroll-contain bg-slate-500/30 opacity-0 transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100 peer-checked:*:translate-y-0 peer-checked:*:scale-100">
+            <label class="max-h[calc(100vh)] h-fit max-w-lg scale-90 overflow-y-auto overscroll-contain rounded-3xl bg-white p-6 text-black shadow-2xl transition space-y-4">
+                <div>
+                    <h3 class="text-lg font-medium">Titular</h3>
+                    <p>{birthdayData.regalos.titular}</p>
+                </div>
+                <!-- Agregamos data-copy para que JS sepa qué texto copiar -->
+                <div>
+                    <h3 class="text-lg font-medium">Alias:</h3>
+                    <p class="bg-slate-200 px-3 py-2 rounded-lg flex items-center justify-between gap-6">
+                        {birthdayData.regalos.alias}
+                        <svg data-copy={birthdayData.regalos.alias} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy cursor-pointer btn-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    </p>
+                </div>
+            </label>
+        </label>
+    </section>
+
+    <section class="w-full bg-purple-500 flex justify-center items-center py-2 px-4 max-w-3xl mx-auto">
+        <a href="https://ramirosolano.vercel.app" target="_blank" rel="noopener noreferrer" class="text-white text-sm font-medium hover:text-theme-3 transition-colors underline underline-offset-2 text-center drop-shadow-sm">
+            Hecho por Ramiro Solano · Diseño y desarrollo web
+        </a>
+    </section>
+
+    <script>
+        import { initTarjeta } from '../scripts/tarjeta';
+        initTarjeta();
+    </script>
+</main>
